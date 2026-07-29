@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Patients</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            text-align: center;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+        }
+
+        th {
+            background-color: #2563eb;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        td {
+            background-color: #f8f9fa;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        tr:hover {
+            background-color: #e2e8f0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        input, select {
+            flex: 1;
+            min-width: 150px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        button {
+            background-color: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1e40af;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Accueil</a> |
+        <a href="/patients">Patients</a>
+    </nav>
+    <div class="container">
+        <h1>Liste des Patients</h1>
+
+        <!-- Search Form -->
+        <form id="search-form" action="/patients/search" method="GET">
+            <input type="text" name="Disease" placeholder="Nom de la maladie">
+            <select name="Fever">
+                <option value="">Fièvre (tous)</option>
+                <option value="Yes">Oui</option>
+                <option value="No">Non</option>
+            </select>
+            <select name="Cough">
+                <option value="">Toux (tous)</option>
+                <option value="Yes">Oui</option>
+                <option value="No">Non</option>
+            </select>
+            <select name="Fatigue">
+                <option value="">Fatigue (tous)</option>
+                <option value="Yes">Oui</option>
+                <option value="No">Non</option>
+            </select>
+            <input type="number" name="Age" placeholder="Âge">
+            <select name="Gender">
+                <option value="">Genre (tous)</option>
+                <option value="Male">Masculin</option>
+                <option value="Female">Féminin</option>
+            </select>
+            <select name="blood_pressure">
+                <option value="">Pression Artérielle (tous)</option>
+                <option value="High">Élevée</option>
+                <option value="Normal">Normale</option>
+                <option value="Low">Basse</option>
+            </select>
+            <select name="cholesterol_level">
+                <option value="">Cholestérol (tous)</option>
+                <option value="High">Élevé</option>
+                <option value="Normal">Normal</option>
+                <option value="Low">Bas</option>
+            </select>
+            <select name="difficulty_breathing">
+                <option value="">Difficulté à respirer (tous)</option>
+                <option value="Yes">Oui</option>
+                <option value="No">Non</option>
+            </select>
+            <button type="submit">Rechercher</button>
+        </form>
+
+        <!-- Patients Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Âge</th>
+                    <th>Genre</th>
+                    <th>Pression Artérielle</th>
+                    <th>Cholestérol</th>
+                    <th>Difficulté à Respirer</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% patients.forEach(patient => { %>
+                <tr>
+                    <td><%= patient.Disease %></td>
+                    <td><%= patient.Age %></td>
+                    <td><%= patient.Gender %></td>
+                    <td><%= patient.blood_pressure %></td>
+                    <td><%= patient.cholesterol_level %></td>
+                    <td><%= patient.difficulty_breathing %></td>
+                    <td>
+                        <a href="/patients/edit/<%= patient._id %>">Modifier</a>
+                        <a href="/patients/delete/<%= patient._id %>" style="color: red;">Supprimer</a>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

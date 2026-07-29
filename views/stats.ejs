@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistiques des Patients</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        nav {
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .chart-container {
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+        }
+
+        canvas {
+            max-width: 800px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Statistiques des Patients</h1>
+    <nav>
+        <a href="/">Accueil</a> |
+        <a href="/patients">Patients</a>
+    </nav>
+
+    <div class="chart-container">
+        <h2>Répartition par Âge</h2>
+        <canvas id="ageChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Répartition par Genre</h2>
+        <canvas id="genderChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Répartition par Diagnostique</h2>
+        <canvas id="diseaseChart"></canvas>
+    </div>
+
+    <script>
+        const createChart = (ctx, type, labels, data, title) => {
+            new Chart(ctx, {
+                type: type,
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: title,
+                        data: data,
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.6)', 
+                            'rgba(255, 99, 132, 0.6)', 
+                            'rgba(153, 102, 255, 0.6)', 
+                            'rgba(255, 206, 86, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)', 
+                            'rgba(255, 99, 132, 1)', 
+                            'rgba(153, 102, 255, 1)', 
+                            'rgba(255, 206, 86, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: { font: { size: 14 } }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: { font: { size: 14 } }
+                        }
+                    }
+                }
+            });
+        };
+
+        fetch('/patients/stats/age').then(res => res.json()).then(data => {
+            const labels = data.map(stat => stat._id);
+            const counts = data.map(stat => stat.count);
+            createChart(document.getElementById('ageChart'), 'bar', labels, counts, 'Répartition par Âge');
+        });
+
+        fetch('/patients/stats/gender').then(res => res.json()).then(data => {
+            const labels = data.map(stat => stat._id);
+            const counts = data.map(stat => stat.count);
+            createChart(document.getElementById('genderChart'), 'pie', labels, counts, 'Répartition par Genre');
+        });
+
+        fetch('/patients/stats/disease').then(res => res.json()).then(data => {
+            const labels = data.map(stat => stat._id);
+            const counts = data.map(stat => stat.count);
+            createChart(document.getElementById('diseaseChart'), 'bar', labels, counts, 'Répartition par Diagnostique');
+        });
+    </script>
+</body>
+</html>

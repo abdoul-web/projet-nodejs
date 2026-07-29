@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats de la Recherche</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0077b6;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f4f4f9;
+        }
+
+        tr:hover {
+            background-color: #d4e8f9;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #0077b6;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        .btn-delete {
+            color: #ff4d4d;
+        }
+
+        .btn-delete:hover {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Accueil</a> |
+        <a href="/patients">Patients</a>
+    </nav>
+    <h1>Résultats de la Recherche</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Maladie</th>
+                <th>Âge</th>
+                <th>Genre</th>
+                <th>Symptômes</th>
+                <th>Classification</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% patients.forEach(patient => { %>
+                <tr>
+                    <td><%= patient._id %></td>
+                    <td><%= patient.Disease %></td>
+                    <td><%= patient.Age %></td>
+                    <td><%= patient.Gender %></td>
+                    <td>
+                        Fièvre : <%= patient.Fever %>, 
+                        Toux : <%= patient.Cough %>, 
+                        Fatigue : <%= patient.Fatigue %>
+                    </td>
+                    <td><%= patient.classification %></td>
+                    <td>
+                        <a href="/patients/edit/<%= patient._id %>">Modifier</a> | 
+                        <a href="/patients/delete/<%= patient._id %>" class="btn-delete">Supprimer</a>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

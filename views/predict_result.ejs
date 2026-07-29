@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Résultat de la Prédiction</title>
+  <style>
+    /* Arrière-plan */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(to bottom, #6a11cb, #2575fc);
+      color: #fff;
+    }
+
+    /* Conteneur principal */
+    .result-container {
+      margin: 50px auto;
+      padding: 20px 30px;
+      background: #fff;
+      color: #333;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+    }
+
+    /* Titre principal */
+    h1 {
+      color: #fff;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Titres secondaires */
+    h2 {
+      color: #333;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    /* Texte */
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    /* Styles pour le risque */
+    .risk {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .low-risk {
+      color: green;
+    }
+
+    .high-risk {
+      color: red;
+    }
+
+    /* Pied de page */
+    .footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Résultat de la Prédiction</h1>
+  <nav>
+    <a href="/">Accueil</a> |
+    <a href="/patients">Patients</a>
+</nav>
+  <div class="result-container">
+    <h2>Résumé des Données</h2>
+    <p><strong>Âge :</strong> <%= age %></p>
+    <p><strong>Pression Artérielle :</strong> <%= bloodPressure %></p>
+    <p><strong>Niveau de Cholestérol :</strong> <%= cholesterolLevel %></p>
+    <p class="risk <%= risk === 'Élevé' ? 'high-risk' : 'low-risk' %>">
+      <strong>Risque :</strong> <%= risk %>
+    </p>
+    <p><strong>Score :</strong> <%= score %>%</p>
+  </div>
+  <div class="footer">
+    © 2024 | Résultats de prédiction médicale
+  </div>
+</body>
+</html>

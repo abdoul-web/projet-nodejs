@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire de Prédiction</title>
+  <style>
+    /* Arrière-plan */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('/images/imag.avif'); /* Chemin vers l'image */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Conteneur principal */
+    .form-container {
+      background: rgba(0, 0, 0, 0.8); /* Couche sombre pour contraste */
+      border-radius: 15px;
+      padding: 40px;
+      width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Titre */
+    .form-container h1 {
+      color: #fff;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+
+    /* Navigation */
+    nav {
+      margin-bottom: 20px;
+    }
+
+    nav a {
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #45a049;
+    }
+
+    /* Champs du formulaire */
+    .form-container label {
+      display: block;
+      color: #fff;
+      font-size: 1em;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+
+    .form-container input,
+    .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+      outline: none;
+      transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    /* Mettre en surbrillance les champs au focus */
+    .form-container input:focus,
+    .form-container select:focus {
+      border: 1px solid #4CAF50;
+      box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    }
+
+    /* Bouton */
+    .form-container button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-container button:hover {
+      background-color: #45a049;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 500px) {
+      .form-container {
+        width: 90%;
+        padding: 20px;
+      }
+
+      .form-container h1 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Faire une Prédiction</h1>
+    <nav>
+        <a href="/">Accueil</a> |
+        <a href="/patients">Patients</a>
+    </nav>
+    <form method="POST" action="/ai/predict">
+      <label for="age">Âge :</label>
+      <input type="number" name="age" id="age" required placeholder="Entrez votre âge">
+      
+      <label for="bloodPressure">Pression Artérielle :</label>
+      <select name="bloodPressure" id="bloodPressure" required>
+        <option value="High">Élevée</option>
+        <option value="Normal">Normale</option>
+        <option value="Low">Faible</option>
+      </select>
+      
+      <label for="cholesterolLevel">Niveau de Cholestérol :</label>
+      <select name="cholesterolLevel" id="cholesterolLevel" required>
+        <option value="High">Élevé</option>
+        <option value="Normal">Normal</option>
+        <option value="Low">Faible</option>
+      </select>
+      
+      <button type="submit">Prédire</button>
+    </form>
+  </div>
+</body>
+</html>

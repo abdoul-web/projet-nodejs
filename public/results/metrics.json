@@ -1,0 +1,32 @@
+{
+  "best_model": "LogisticRegression",
+  "cross_validation": {
+    "LogisticRegression": {
+      "roc_auc_mean": 0.9285099595393713,
+      "roc_auc_std": 0.08919938931112044
+    },
+    "RandomForest": {
+      "roc_auc_mean": 0.9102978969365523,
+      "roc_auc_std": 0.11030097821467218
+    }
+  },
+  "test_metrics": {
+    "f1_score": 1.0,
+    "roc_auc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "confusion_matrix": [
+      [
+        107,
+        0
+      ],
+      [
+        0,
+        34
+      ]
+    ]
+  },
+  "n_train": 560,
+  "n_test": 141,
+  "n_total_labeled": 701
+}

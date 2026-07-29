@@ -1,0 +1,172 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    max-width: 800px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease; /* Transition ajoutée */
+}
+
+.container:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Effet au survol */
+}
+
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    margin-top: 20px;
+}
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Transition ajoutée */
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #333; /* Changement de couleur au survol */
+}
+
+nav {
+    background-color: #4CAF50;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav a {
+    margin: 0 15px;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease; /* Transition ajoutée */
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Formulaire */
+form#search-form {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center; /* Centrer le formulaire */
+}
+
+form#search-form input, 
+form#search-form select, 
+form#search-form button {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+form#search-form input:focus, 
+form#search-form select:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+form#search-form button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+form#search-form button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 0 8px rgba(0, 0, 255, 0.3); /* Effet au survol */
+}
+
+/* Boutons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.3); /* Effet au survol */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form#search-form {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .container {
+        padding: 15px;
+    }
+}
+
+

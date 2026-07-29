@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Patient</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px 40px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #004d80;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #0077b6;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #0077b6;
+            box-shadow: 0 0 8px rgba(0, 119, 182, 0.5);
+        }
+
+        button {
+            width: 100%;
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #005f73;
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            background-color: #004d80;
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ajouter un Patient</h1>
+        <form action="/patients/add" method="POST">
+            <div class="form-group">
+                <i class="fas fa-stethoscope"></i>
+                <label for="Disease">Maladie :</label>
+                <input type="text" name="Disease" id="Disease" placeholder="Ex : Grippe" required>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-calendar-alt"></i>
+                <label for="Age">Âge :</label>
+                <input type="number" name="Age" id="Age" placeholder="Ex : 35" required>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-venus-mars"></i>
+                <label for="Gender">Genre :</label>
+                <select name="Gender" id="Gender" required>
+                    <option value="Male">Homme</option>
+                    <option value="Female">Femme</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-tachometer-alt"></i>
+                <label for="BloodPressure">Pression Artérielle :</label>
+                <select name="BloodPressure" id="BloodPressure" required>
+                    <option value="High">Élevée</option>
+                    <option value="Normal">Normale</option>
+                    <option value="Low">Faible</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-heartbeat"></i>
+                <label for="CholesterolLevel">Niveau de Cholestérol :</label>
+                <select name="CholesterolLevel" id="CholesterolLevel" required>
+                    <option value="High">Élevé</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Low">Faible</option>
+                </select>
+            </div>
+
+            <button type="submit">Ajouter</button>
+        </form>
+    </div>
+</body>
+</html>
